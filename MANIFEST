@@ -1,0 +1,25 @@
+Changes
+ignore.txt
+inc/Module/Install.pm
+inc/Module/Install/Base.pm
+inc/Module/Install/Can.pm
+inc/Module/Install/Fetch.pm
+inc/Module/Install/Makefile.pm
+inc/Module/Install/Metadata.pm
+inc/Module/Install/Scripts.pm
+inc/Module/Install/Win32.pm
+inc/Module/Install/WriteAll.pm
+lib/W3C/XMLSchema.pm
+lib/W3C/XMLSchema/Attribute.pm
+lib/W3C/XMLSchema/AttributeGroup.pm
+Makefile.PL
+MANIFEST			This list of files
+META.yml
+README
+script/xsd_structure
+t/00-load.t
+t/10_parse_imsqti.t
+t/boilerplate.t
+t/data/imsqti_v2p1.xsd
+t/pod-coverage.t
+t/pod.t
