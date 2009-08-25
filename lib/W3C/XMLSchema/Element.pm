@@ -1,4 +1,4 @@
-package W3C::XMLSchema::AttributeGroup;
+package W3C::XMLSchema::Element;
 use Moose;
 with 'Rabbit::Node';
 
@@ -7,21 +7,24 @@ has 'name' => (
     xpath_query => './@name',
 );
 
+has 'type' => (
+    traits      => [qw/XPathValue/],
+    xpath_query => './@type',
+);
+
 has 'ref' => (
     traits      => [qw/XPathValue/],
     xpath_query => './@ref',
 );
 
-has 'attribute_groups' => (
-    isa         => 'ArrayRef[W3C::XMLSchema::AttributeGroup]',
-    traits      => [qw/XPathObjectList/],
-    xpath_query => './xsd:attributeGroup',
+has 'minOccurs' => (
+    traits      => [qw/XPathValue/],
+    xpath_query => './@minOccurs',
 );
 
-has 'attributes' => (
-    isa         => 'ArrayRef[W3C::XMLSchema::Attribute]',
-    traits      => [qw/XPathObjectList/],
-    xpath_query => './xsd:attribute',
+has 'maxOccurs' => (
+    traits      => [qw/XPathValue/],
+    xpath_query => './@maxOccurs',
 );
 
 no Moose;
@@ -31,7 +34,7 @@ __PACKAGE__->meta->make_immutable();
 
 =head1 NAME
 
-W3C::XMLSchema::AttributeGroup - XMLSchema Attribute Group Definition
+W3C::XMLSchema::Attribute - XMLSchema Attribute Definition
 
 
 =head1 SYNOPSIS
@@ -41,7 +44,7 @@ W3C::XMLSchema::AttributeGroup - XMLSchema Attribute Group Definition
 
 =head1 DESCRIPTION
 
-AttributeGroups, as defined by XMLSchema definition.
+Attribute, as defined by XMLSchema definition.
 
 See L<W3C::XMLSchema> for a more complete example.
 
@@ -54,21 +57,27 @@ See L<W3C::XMLSchema> for a more complete example.
 
 =item C<name>
 
-Name given to attribute group.
+Name given to attribute.
+
+
+=item C<type>
+
+Type given of attribute.
 
 
 =item C<ref>
 
-Name of other AttributeGroup this attribute group references.
-
-=item C<attribute_groups>
-
-Child AttributeGroup of this AttributeGroup. Mostly used for referencing other AttributeGroups.
+Identifier of the element this element refers to.
 
 
-=item C<attributes>
+=item C<minOccurs>
 
-List of attributes associated with this attribute group. Instance type L<W3C::XMLSchema::Attribute>.
+Minimum amount of occurences.
+
+
+=item C<maxOccurs>
+
+Maximum amount of occurences. 'unbounded' means no upper limit.
 
 
 =item C<new>

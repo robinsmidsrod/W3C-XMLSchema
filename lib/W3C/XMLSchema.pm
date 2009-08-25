@@ -23,6 +23,12 @@ has 'attribute_groups' => (
     xpath_query => './xsd:attributeGroup',
 );
 
+has 'groups' => (
+    isa         => 'ArrayRef[W3C::XMLSchema::Group]',
+    traits      => [qw/XPathObjectList/],
+    xpath_query => './xsd:group',
+);
+
 no Moose;
 __PACKAGE__->meta->make_immutable();
 
@@ -82,6 +88,11 @@ The namespace the schema definition targets.
 =item C<attribute_groups>
 
 A list of all the attribute groups defined. Instances of L<W3C::XMLSchema::AttributeGroup>.
+
+
+=item C<groups>
+
+A list of all the groups defined. Instances of L<W3C::XMLSchema::Group>.
 
 
 =item C<namespace_map>
