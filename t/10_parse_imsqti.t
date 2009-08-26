@@ -63,7 +63,7 @@ can_ok($group0_seq, 'items');
 my $group0_seq_groups = $group0_seq->items;
 is( scalar @{ $group0_seq_groups }, 1, 'First group sequence items count mismatch');
 isa_ok( $group0_seq_groups->[0], 'W3C::XMLSchema::Group');
-is ( $group0_seq_groups->[0]->ref, 'simpleInline.ContentGroup', 'First group sequence item 0 ref mismatch');
+is( $group0_seq_groups->[0]->ref, 'simpleInline.ContentGroup', 'First group sequence item 0 ref mismatch');
 
 my $group6 = $qti->groups->[6];
 isa_ok( $group6, 'W3C::XMLSchema::Group' );

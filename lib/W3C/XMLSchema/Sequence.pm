@@ -3,10 +3,9 @@ use Moose;
 with 'Rabbit::Node';
 
 has 'items' => (
-    isa         => 'ArrayRef[W3C::XMLSchema::Group|W3C::XMLSchema::Element]',
     traits      => ['XPathObjectList'],
     xpath_query => './*',
-    node_map    => {
+    isa_map     => {
         'xsd:group'   => 'W3C::XMLSchema::Group',
         'xsd:element' => 'W3C::XMLSchema::Element',
     },
@@ -19,7 +18,7 @@ __PACKAGE__->meta->make_immutable();
 
 =head1 NAME
 
-W3C::XMLSchema::Group - XMLSchema Group Definition
+W3C::XMLSchema::Sequence - XMLSchema Sequence Definition
 
 
 =head1 SYNOPSIS
@@ -29,7 +28,7 @@ W3C::XMLSchema::Group - XMLSchema Group Definition
 
 =head1 DESCRIPTION
 
-Groups, as defined by XMLSchema definition.
+Sequence, as defined by XMLSchema definition.
 
 See L<W3C::XMLSchema> for a more complete example.
 
@@ -60,7 +59,13 @@ Moose meta object.
 
 Inherited from L<Rabbit::Node>.
 
+
 =item C<xpc>
+
+Inherited from L<Rabbit::Node>.
+
+
+=item C<namespace_map>
 
 Inherited from L<Rabbit::Node>.
 

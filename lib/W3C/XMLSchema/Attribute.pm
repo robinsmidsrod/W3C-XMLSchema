@@ -84,6 +84,11 @@ Inherited from L<Rabbit::Node>.
 Inherited from L<Rabbit::Node>.
 
 
+=item C<namespace_map>
+
+Inherited from L<Rabbit::Node>.
+
+
 =back
 
 
