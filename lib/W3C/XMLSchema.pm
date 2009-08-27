@@ -29,6 +29,12 @@ has 'groups' => (
     xpath_query => './xsd:group',
 );
 
+has 'complex_types' => (
+    isa         => 'ArrayRef[W3C::XMLSchema::ComplexType]',
+    traits      => [qw/XPathObjectList/],
+    xpath_query => './xsd:complexType',
+);
+
 no Moose;
 __PACKAGE__->meta->make_immutable();
 
@@ -93,6 +99,11 @@ A list of all the attribute groups defined. Instances of L<W3C::XMLSchema::Attri
 =item C<groups>
 
 A list of all the groups defined. Instances of L<W3C::XMLSchema::Group>.
+
+
+=item C<complex_types>
+
+A list of all the complex types defined. Instances of L<W3C::XMLSchema::ComplexType>.
 
 
 =item C<namespace_map>

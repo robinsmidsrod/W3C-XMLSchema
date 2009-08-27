@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 38;
+use Test::More tests => 47;
 
 BEGIN {
     use_ok( 'W3C::XMLSchema' );
@@ -71,5 +71,16 @@ is( $group6->name, 'areaMapping.ContentGroup', '6th group name mismatch');
 my $group6_seq_items = $group6->sequence->items;
 isa_ok( $group6_seq_items->[0], 'W3C::XMLSchema::Element');
 is( $group6_seq_items->[0]->ref, 'areaMapEntry', '6th group item 0 ref mismatch');
+
+can_ok($qti, 'complex_types');
+my $complex_type0 = $qti->complex_types->[0];
+isa_ok( $complex_type0, 'W3C::XMLSchema::ComplexType' );
+can_ok( $complex_type0, 'name');
+is( $complex_type0->name, 'a.Type', '1st complex type name mismatch');
+can_ok( $complex_type0, 'mixed');
+is( $complex_type0->mixed, 'true', '1st complex type mixed mismatch');
+can_ok( $complex_type0, 'items');
+isa_ok( $complex_type0->items->[0], 'W3C::XMLSchema::Group');
+is( $complex_type0->items->[0]->ref, 'a.ContentGroup', '1st complex type item 0 ref mismatch');
 
 1;
