@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 47;
+use Test::More tests => 54;
 
 BEGIN {
     use_ok( 'W3C::XMLSchema' );
@@ -15,6 +15,7 @@ isa_ok($qti, 'W3C::XMLSchema');
 can_ok($qti, 'target_namespace');
 is($qti->target_namespace, 'http://www.imsglobal.org/xsd/imsqti_v2p1');
 
+# Class: a
 can_ok($qti, 'attribute_groups');
 my $attr_groups = $qti->attribute_groups;
 is( scalar @{ $attr_groups }, 188, 'attribute_groups count mismatch');
@@ -82,5 +83,16 @@ is( $complex_type0->mixed, 'true', '1st complex type mixed mismatch');
 can_ok( $complex_type0, 'items');
 isa_ok( $complex_type0->items->[0], 'W3C::XMLSchema::Group');
 is( $complex_type0->items->[0]->ref, 'a.ContentGroup', '1st complex type item 0 ref mismatch');
+
+can_ok( $qti, 'elements' );
+is( scalar @{ $qti->elements }, 254, 'elements count mismatch' );
+my $element0 = $qti->elements->[0];
+isa_ok( $element0, 'W3C::XMLSchema::Element' );
+can_ok( $element0, 'name');
+can_ok( $element0, 'type');
+is( $element0->name, 'a', '1st element name mismatch' );
+is( $element0->type, 'a.Type', '1st element type mismatch' );
+
+# Class: abbr
 
 1;

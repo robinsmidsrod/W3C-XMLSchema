@@ -35,6 +35,12 @@ has 'complex_types' => (
     xpath_query => './xsd:complexType',
 );
 
+has 'elements' => (
+    isa         => 'ArrayRef[W3C::XMLSchema::Element]',
+    traits      => [qw/XPathObjectList/],
+    xpath_query => './xsd:element',
+);
+
 no Moose;
 __PACKAGE__->meta->make_immutable();
 
@@ -104,6 +110,11 @@ A list of all the groups defined. Instances of L<W3C::XMLSchema::Group>.
 =item C<complex_types>
 
 A list of all the complex types defined. Instances of L<W3C::XMLSchema::ComplexType>.
+
+
+=item C<elements>
+
+A list of all the elements defined. Instances of L<W3C::XMLSchema::Element>.
 
 
 =item C<namespace_map>
