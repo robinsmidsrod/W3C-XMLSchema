@@ -1,12 +1,12 @@
-use inc::Module::Install 0.91;
+use inc::Module::Install 0.99;
 
 name     'W3C-XMLSchema';
 author   q{Robin Smidsrød <robin@smidsrod.no>};
 license  'perl';
 all_from 'lib/W3C/XMLSchema.pm';
 
-requires 'Moose'  => '0.88';
-requires 'Rabbit' => '0.01';
+requires 'Moose'       => '0.88';
+requires 'XML::Rabbit' => '0.0.1';
 
 build_requires 'Test::More' => '0.88';
 

@@ -1,6 +1,6 @@
 package W3C::XMLSchema;
 use Moose;
-with 'Rabbit::RootNode';
+with 'XML::Rabbit::RootNode';
 
 use 5.008;
 
@@ -126,12 +126,12 @@ Namespace map for XMLSchema definition.
 
 =item C<node>
 
-Inherited from L<Rabbit::RootNode>.
+Inherited from L<XML::Rabbit::RootNode>.
 
 
 =item C<xpc>
 
-Inherited from L<Rabbit::RootNode>.
+Inherited from L<XML::Rabbit::RootNode>.
 
 
 =item C<meta>
@@ -141,12 +141,12 @@ Moose meta object.
 
 =item C<dump_xml>
 
-Inherited from L<Rabbit::Role::Node>.
+Inherited from L<XML::Rabbit::Role::Node>.
 
 
 =item C<dump_document_xml>
 
-Inherited from L<Rabbit::Role::Document>.
+Inherited from L<XML::Rabbit::Role::Document>.
 
 
 =back
@@ -225,7 +225,7 @@ See http://dev.perl.org/licenses/ for more information.
 
 =head1 SEE ALSO
 
-L<Rabbit>, L<XML::Toolkit>, L<Moose>, L<XML::LibXML>
+L<XML::Rabbit>, L<XML::Toolkit>, L<Moose>, L<XML::LibXML>
 
 
 =cut

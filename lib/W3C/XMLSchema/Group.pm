@@ -1,6 +1,6 @@
 package W3C::XMLSchema::Group;
 use Moose;
-with 'Rabbit::Node';
+with 'XML::Rabbit::Node';
 
 has 'name' => (
     traits      => ['XPathValue'],
@@ -73,16 +73,16 @@ Moose meta object.
 
 =item C<node>
 
-Inherited from L<Rabbit::Node>.
+Inherited from L<XML::Rabbit::Node>.
 
 =item C<xpc>
 
-Inherited from L<Rabbit::Node>.
+Inherited from L<XML::Rabbit::Node>.
 
 
 =item C<namespace_map>
 
-Inherited from L<Rabbit::Node>.
+Inherited from L<XML::Rabbit::Node>.
 
 
 =back
