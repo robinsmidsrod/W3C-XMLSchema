@@ -6,3 +6,5 @@
 /MANIFEST.bak
 /META.yml
 /pm_to_blib
+/W3C-XMLSchema-*
+/.build
