@@ -1,0 +1,137 @@
+NAME
+    W3C::XMLSchema - Parser for W3C XML Schema Definition (XSD)
+
+VERSION
+    version 0.0.1
+
+SYNOPSIS
+        use W3C::XMLSchema;
+
+        my $xsd=W3C::XMLSchema->new( file => shift );
+        print "Target namespace: " . $xsd->target_namespace . "\n";
+
+        print "Attribute groups:\n";
+        foreach my $attr_group ( @{ $xsd->attribute_groups } ) {
+            print $attr_group->name . "\n";
+            foreach my $attr ( @{ $attr_group->attributes } ) {
+                print "\t"
+                     . $attr->name
+                     . " (" . $attr->type . ") "
+                     . ( $attr->use eq 'required' ? '*' : '-' )
+                     . "\n";
+            }
+        }
+
+DESCRIPTION
+    This is a module that makes it easy to iterate over and extract
+    information from an XML Schema definition (aka XSD), as defined by the
+    W3C.
+
+ATTRIBUTES
+  namespace_map
+    Namespace map for XMLSchema definition.
+
+  target_namespace
+    The namespace the schema definition targets.
+
+  attribute_groups
+    A list of all the attribute groups defined. Instances of
+    W3C::XMLSchema::AttributeGroup.
+
+  groups
+    A list of all the groups defined. Instances of W3C::XMLSchema::Group.
+
+  complex_types
+    A list of all the complex types defined. Instances of
+    W3C::XMLSchema::ComplexType.
+
+  elements
+    A list of all the elements defined. Instances of
+    W3C::XMLSchema::Element.
+
+INCOMPLETE IMPLEMENTATION / WORK-IN-PROGRESS
+    This implementation is incomplete and should be considered a
+    work-in-progress. Please file bug reports (or provide patches) if
+    something you need is not extractable with the current API.
+
+SEMANTIC VERSIONING
+    This module uses semantic versioning concepts from <http://semver.org/>.
+
+ACKNOWLEDGEMENTS
+    The following people have helped to review or otherwise encourage me to
+    work on this module.
+
+    Chris Prather (perigrin)
+
+SEE ALSO
+    *   XML::Rabbit
+
+    *   XML::Toolkit
+
+    *   Moose
+
+    *   XML::LibXML
+
+SUPPORT
+    You can find documentation for this module with the perldoc command.
+
+      perldoc W3C::XMLSchema
+
+  Websites
+    *   Search CPAN
+
+        <http://search.cpan.org/dist/W3C-XMLSchema>
+
+    *   AnnoCPAN: Annotated CPAN documentation
+
+        <http://annocpan.org/dist/W3C-XMLSchema>
+
+    *   CPAN Ratings
+
+        <http://cpanratings.perl.org/d/W3C-XMLSchema>
+
+    *   CPAN Forum
+
+        <http://cpanforum.com/dist/W3C-XMLSchema>
+
+    *   RT: CPAN's Bug Tracker
+
+        <http://rt.cpan.org/NoAuth/Bugs.html?Dist=W3C-XMLSchema>
+
+    *   CPANTS Kwalitee
+
+        <http://cpants.perl.org/dist/overview/W3C-XMLSchema>
+
+    *   CPAN Testers Results
+
+        <http://cpantesters.org/distro/W/W3C-XMLSchema.html>
+
+    *   CPAN Testers Matrix
+
+        <http://matrix.cpantesters.org/?dist=W3C-XMLSchema>
+
+    *   Source Code Repository
+
+        The code is open to the world, and available for you to hack on.
+        Please feel free to browse it and play with it, or whatever. If you
+        want to contribute patches, please send me a diff or prod me to pull
+        from your repository :)
+
+        <git://github.com/robinsmidsrod/W3C-XMLSchema.git>
+
+  Bugs
+    Please report any bugs or feature requests to "bug-w3c-xmlschema at
+    rt.cpan.org", or through the web interface at
+    <http://rt.cpan.org/NoAuth/ReportBug.html?Queue=W3C-XMLSchema>. I will
+    be notified, and then you'll automatically be notified of progress on
+    your bug as I make changes.
+
+AUTHOR
+      Robin Smidsrød <robin@smidsrod.no>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2010 by Robin Smidsrød.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
+
