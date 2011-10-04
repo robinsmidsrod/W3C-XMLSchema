@@ -3,7 +3,8 @@
 use strict;
 use warnings;
 
-package main;
+# PODNAME: xsd_structure
+# ABSTRACT: Structure information from an XSD (XML Schema Definition) file
 
 use W3C::XMLSchema;
 
