@@ -59,7 +59,7 @@ __END__
 
     use W3C::XMLSchema;
 
-    my $xsd=W3C::XMLSchema->new( file => shift );
+    my $xsd = W3C::XMLSchema->new( file => shift );
     print "Target namespace: " . $xsd->target_namespace . "\n";
 
     print "Attribute groups:\n";
