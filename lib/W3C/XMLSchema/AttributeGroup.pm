@@ -2,8 +2,7 @@ use strict;
 use warnings;
 
 package W3C::XMLSchema::AttributeGroup;
-use Moose;
-with 'XML::Rabbit::Node';
+use XML::Rabbit;
 
 # ABSTRACT: XMLSchema Attribute Group Definition
 
@@ -13,10 +12,7 @@ Name given to attribute group.
 
 =cut
 
-has 'name' => (
-    traits      => [qw/XPathValue/],
-    xpath_query => './@name',
-);
+has_xpath_value 'name' => './@name';
 
 =attr ref
 
@@ -24,10 +20,7 @@ Name of other AttributeGroup this attribute group references.
 
 =cut
 
-has 'ref' => (
-    traits      => [qw/XPathValue/],
-    xpath_query => './@ref',
-);
+has_xpath_value 'ref' => './@ref';
 
 =attr attribute_groups
 
@@ -35,11 +28,7 @@ Child AttributeGroup of this AttributeGroup. Mostly used for referencing other A
 
 =cut
 
-has 'attribute_groups' => (
-    isa         => 'ArrayRef[W3C::XMLSchema::AttributeGroup]',
-    traits      => [qw/XPathObjectList/],
-    xpath_query => './xsd:attributeGroup',
-);
+has_xpath_object_list 'attribute_groups' => './xsd:attributeGroup' => 'W3C::XMLSchema::AttributeGroup';
 
 =attr attributes
 
@@ -47,16 +36,12 @@ List of attributes associated with this attribute group. Instance type L<W3C::XM
 
 =cut
 
-has 'attributes' => (
-    isa         => 'ArrayRef[W3C::XMLSchema::Attribute]',
-    traits      => [qw/XPathObjectList/],
-    xpath_query => './xsd:attribute',
-);
+has_xpath_object_list 'attributes' => './xsd:attribute' => 'W3C::XMLSchema::Attribute';
 
-no Moose;
-__PACKAGE__->meta->make_immutable();
-
+finalize_class();
 1;
+
+__END__
 
 =head1 DESCRIPTION
 

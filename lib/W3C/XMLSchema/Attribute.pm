@@ -2,8 +2,7 @@ use strict;
 use warnings;
 
 package W3C::XMLSchema::Attribute;
-use Moose;
-with 'XML::Rabbit::Node';
+use XML::Rabbit;
 
 # ABSTRACT: XMLSchema Attribute Definition
 
@@ -13,10 +12,7 @@ Name given to attribute.
 
 =cut
 
-has 'name' => (
-    traits      => [qw/XPathValue/],
-    xpath_query => './@name',
-);
+has_xpath_value 'name' => './@name';
 
 =attr type
 
@@ -24,10 +20,7 @@ Type given of attribute.
 
 =cut
 
-has 'type' => (
-    traits      => [qw/XPathValue/],
-    xpath_query => './@type',
-);
+has_xpath_value 'type' => './@type';
 
 =attr use
 
@@ -35,15 +28,12 @@ If the attribute is required or not. A string with the value 'required' or 'opti
 
 =cut
 
-has 'use' => (
-    traits      => [qw/XPathValue/],
-    xpath_query => './@use',
-);
+has_xpath_value 'use' => './@use';
 
-no Moose;
-__PACKAGE__->meta->make_immutable();
-
+finalize_class();
 1;
+
+__END__
 
 =head1 DESCRIPTION
 

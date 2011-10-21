@@ -2,8 +2,7 @@ use strict;
 use warnings;
 
 package W3C::XMLSchema::Sequence;
-use Moose;
-with 'XML::Rabbit::Node';
+use XML::Rabbit;
 
 # ABSTRACT: XMLSchema Sequence Definition
 
@@ -14,19 +13,17 @@ L<W3C::XMLSchema::Element>.
 
 =cut
 
-has 'items' => (
-    traits      => ['XPathObjectList'],
-    xpath_query => './*',
-    isa_map     => {
+has_xpath_object_list 'items' => './*',
+    {
         'xsd:group'   => 'W3C::XMLSchema::Group',
         'xsd:element' => 'W3C::XMLSchema::Element',
     },
-);
+;
 
-no Moose;
-__PACKAGE__->meta->make_immutable();
-
+finalize_class();
 1;
+
+__END__
 
 =head1 DESCRIPTION
 

@@ -2,24 +2,13 @@ use strict;
 use warnings;
 
 package W3C::XMLSchema;
-use Moose;
-with 'XML::Rabbit::RootNode';
+use XML::Rabbit::Root 0.1.0;
 
 # ABSTRACT: Parser for W3C XML Schema Definition (XSD)
 
 use 5.008;
 
-=attr namespace_map
-
-Namespace map for XMLSchema definition.
-
-=cut
-
-has '+namespace_map' => (
-    default => sub { {
-        'xsd' => 'http://www.w3.org/2001/XMLSchema',
-    } }
-);
+add_xpath_namespace 'xsd' => 'http://www.w3.org/2001/XMLSchema';
 
 =attr target_namespace
 
@@ -27,10 +16,7 @@ The namespace the schema definition targets.
 
 =cut
 
-has 'target_namespace' => (
-    traits      => [qw/XPathValue/],
-    xpath_query => './@targetNamespace',
-);
+has_xpath_value 'target_namespace' => './@targetNamespace';
 
 =attr attribute_groups
 
@@ -38,11 +24,7 @@ A list of all the attribute groups defined. Instances of L<W3C::XMLSchema::Attri
 
 =cut
 
-has 'attribute_groups' => (
-    isa         => 'ArrayRef[W3C::XMLSchema::AttributeGroup]',
-    traits      => [qw/XPathObjectList/],
-    xpath_query => './xsd:attributeGroup',
-);
+has_xpath_object_list 'attribute_groups' => './xsd:attributeGroup' => 'W3C::XMLSchema::AttributeGroup';
 
 =attr groups
 
@@ -50,11 +32,7 @@ A list of all the groups defined. Instances of L<W3C::XMLSchema::Group>.
 
 =cut
 
-has 'groups' => (
-    isa         => 'ArrayRef[W3C::XMLSchema::Group]',
-    traits      => [qw/XPathObjectList/],
-    xpath_query => './xsd:group',
-);
+has_xpath_object_list 'groups' => './xsd:group' => 'W3C::XMLSchema::Group';
 
 =attr complex_types
 
@@ -62,11 +40,7 @@ A list of all the complex types defined. Instances of L<W3C::XMLSchema::ComplexT
 
 =cut
 
-has 'complex_types' => (
-    isa         => 'ArrayRef[W3C::XMLSchema::ComplexType]',
-    traits      => [qw/XPathObjectList/],
-    xpath_query => './xsd:complexType',
-);
+has_xpath_object_list 'complex_types' => './xsd:complexType' => 'W3C::XMLSchema::ComplexType';
 
 =attr elements
 
@@ -74,16 +48,12 @@ A list of all the elements defined. Instances of L<W3C::XMLSchema::Element>.
 
 =cut
 
-has 'elements' => (
-    isa         => 'ArrayRef[W3C::XMLSchema::Element]',
-    traits      => [qw/XPathObjectList/],
-    xpath_query => './xsd:element',
-);
+has_xpath_object_list 'elements' => './xsd:element' => 'W3C::XMLSchema::Element';
 
-no Moose;
-__PACKAGE__->meta->make_immutable();
-
+finalize_class();
 1;
+
+__END__
 
 =head1 SYNOPSIS
 

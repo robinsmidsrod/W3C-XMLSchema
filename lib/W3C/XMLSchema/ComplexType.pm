@@ -2,8 +2,7 @@ use strict;
 use warnings;
 
 package W3C::XMLSchema::ComplexType;
-use Moose;
-with 'XML::Rabbit::Node';
+use XML::Rabbit;
 
 # ABSTRACT: XMLSchema ComplexType Definition
 
@@ -13,10 +12,7 @@ Name given to complex type.
 
 =cut
 
-has 'name' => (
-    traits      => ['XPathValue'],
-    xpath_query => './@name',
-);
+has_xpath_value 'name' => './@name';
 
 =attr mixed
 
@@ -24,10 +20,7 @@ True if complex type contains mixed content.
 
 =cut
 
-has 'mixed' => (
-    traits      => ['XPathValue'],
-    xpath_query => './@mixed',
-);
+has_xpath_value 'mixed' => './@mixed';
 
 =attr items
 
@@ -37,19 +30,17 @@ composed of simple types, either elements or attributes.
 
 =cut
 
-has 'items' => (
-    traits      => ['XPathObjectList'],
-    xpath_query => './*',
-    isa_map     => {
+has_xpath_object_list 'items' => './*',
+    {
         'xsd:group'          => 'W3C::XMLSchema::Group',
         'xsd:attributeGroup' => 'W3C::XMLSchema::AttributeGroup',
     },
-);
+;
 
-no Moose;
-__PACKAGE__->meta->make_immutable();
-
+finalize_class();
 1;
+
+__END__
 
 =head1 DESCRIPTION
 

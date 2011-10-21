@@ -2,8 +2,7 @@ use strict;
 use warnings;
 
 package W3C::XMLSchema::Group;
-use Moose;
-with 'XML::Rabbit::Node';
+use XML::Rabbit;
 
 # ABSTRACT: XMLSchema Group Definition
 
@@ -13,10 +12,7 @@ Name given to group.
 
 =cut
 
-has 'name' => (
-    traits      => ['XPathValue'],
-    xpath_query => './@name',
-);
+has_xpath_value 'name' => './@name';
 
 =attr ref
 
@@ -24,10 +20,7 @@ Name of other group this group references.
 
 =cut
 
-has 'ref' => (
-    traits      => ['XPathValue'],
-    xpath_query => './@ref',
-);
+has_xpath_value 'ref' => './@ref';
 
 =attr sequence
 
@@ -35,16 +28,12 @@ The sequence this group requires. Instance of L<W3C::XMLSchema::Sequence>.
 
 =cut
 
-has 'sequence' => (
-    isa         => 'W3C::XMLSchema::Sequence',
-    traits      => ['XPathObject'],
-    xpath_query => './xsd:sequence',
-);
+has_xpath_object 'sequence' => './xsd:sequence' => 'W3C::XMLSchema::Sequence';
 
-no Moose;
-__PACKAGE__->meta->make_immutable();
-
+finalize_class();
 1;
+
+__END__
 
 =head1 DESCRIPTION
 

@@ -4,7 +4,7 @@ W3C::XMLSchema - Parser for W3C XML Schema Definition (XSD)
 
 # VERSION
 
-version 0.0.2
+version 0.0.3
 
 # SYNOPSIS
 
@@ -31,10 +31,6 @@ This is a module that makes it easy to iterate over and extract information
 from an XML Schema definition (aka XSD), as defined by the W3C.
 
 # ATTRIBUTES
-
-## namespace_map
-
-Namespace map for XMLSchema definition.
 
 ## target_namespace
 
