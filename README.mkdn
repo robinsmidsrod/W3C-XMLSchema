@@ -4,7 +4,7 @@ W3C::XMLSchema - Parser for W3C XML Schema Definition (XSD)
 
 # VERSION
 
-version 0.0.3
+version 0.0.4
 
 # SYNOPSIS
 
