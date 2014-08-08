@@ -44,14 +44,12 @@ sub search {
     my ($obj, $query) = @_;
 
     my ($next, $rest) = split /->/, $query, 2;
-    warn "\tSearching ", (ref $obj), " for $next\n";
 
-    $obj
+    my $next_obj
         = blessed $obj && $obj->can($next) ? $obj->$next()
-        : ref $obj eq 'ARRAY' ? $obj->[$next]
-        : ref $obj eq 'HASH'  ? $obj->{$next}
-        :                          die "Can't get $query from $obj\n";
+        : ref $obj eq 'ARRAY'              ? $obj->[$next]
+        : ref $obj eq 'HASH'               ? $obj->{$next}
+        :                                    die "Can't get $query from $obj\n";
 
-    warn Dumper $obj;
-    return $rest ? search($obj, $rest) : $obj;
+    return $rest ? search($next_obj, $rest) : $next_obj;
 }

@@ -1,2 +1,3 @@
 target_namespace http://element.example.com/
-elements->0->name testType
+elements->0->name test
+elements->0->complex_types->0->items->0->items->0->name id
