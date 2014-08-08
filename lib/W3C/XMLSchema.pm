@@ -18,6 +18,18 @@ The namespace the schema definition targets.
 
 has_xpath_value 'target_namespace' => './@targetNamespace';
 
+=attr element_from_default
+
+Form of elements declared into target namespace. Either qualified (elements
+must be prefixed with namespace) or unqualified the default (elements don't
+need namespace prefix).
+
+=cut
+
+has_xpath_value 'element_form_default' => './@elementFormDefault' => (
+    default => 'unqualified',
+);
+
 =attr attribute_groups
 
 A list of all the attribute groups defined. Instances of L<W3C::XMLSchema::AttributeGroup>.

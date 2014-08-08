@@ -46,6 +46,14 @@ Maximum amount of occurences. 'unbounded' means no upper limit.
 
 has_xpath_value 'max_occurs' => './@maxOccurs';
 
+=attr nillable
+
+Weather the element can be undefined (ie null="true")
+
+=cut
+
+has_xpath_value 'nillable' => './@nillable';
+
 =attr complex_types
 
 A list of all the complex types defined. Instances of L<W3C::XMLSchema::ComplexType>.
