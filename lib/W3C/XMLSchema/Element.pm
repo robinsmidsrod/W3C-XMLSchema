@@ -46,6 +46,14 @@ Maximum amount of occurences. 'unbounded' means no upper limit.
 
 has_xpath_value 'maxOccurs' => './@maxOccurs';
 
+=attr complex_types
+
+A list of all the complex types defined. Instances of L<W3C::XMLSchema::ComplexType>.
+
+=cut
+
+has_xpath_object_list 'complex_types' => './xsd:complexType' => 'W3C::XMLSchema::ComplexType';
+
 finalize_class();
 1;
 
