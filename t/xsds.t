@@ -32,8 +32,12 @@ sub test_xsd {
 
     for my $test (@tests) {
         chomp $test;
+        local $TODO;
+        if ($test =~ s/^[#]//xms) {
+            $TODO = "Need to get $test working";
+        }
         my ($search, $value) = split /\s+/, $test, 2;
-        is search($schema, $search), $value, "\$schema->$search == $value";
+        is eval { search($schema, $search) }, $value, "\$schema->$search == $value";
     }
 
     return;
