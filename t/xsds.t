@@ -33,7 +33,6 @@ sub test_xsd {
     for my $test (@tests) {
         chomp $test;
         my ($search, $value) = split /\s+/, $test, 2;
-        warn sprintf "%40s = %s\n", $search, $value;
         is search($schema, $search), $value, "\$schema->$search == $value";
     }
 
