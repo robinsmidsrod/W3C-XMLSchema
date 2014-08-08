@@ -3,6 +3,7 @@
 use strict;
 use warnings;
 use Test::More;
+use Scalar::Util qw/blessed/;
 use Path::Class;
 use Data::Dumper qw/Dumper/;
 use W3C::XMLSchema;
@@ -22,8 +23,35 @@ sub test_xsd {
 
     my $schema = eval { W3C::XMLSchema->new( file => "$xsd" ) };
 
-    ok $schema, "$xsd gives a schema"
+    isa_ok $schema, 'W3C::XMLSchema', "$xsd gives a schema"
         or diag $@;
 
+    my $tests = $xsd;
+    $tests =~ s/[.]xsd$/.has/xms;
+    my @tests = file($tests)->slurp;
+
+    for my $test (@tests) {
+        chomp $test;
+        my ($search, $value) = split /\s+/, $test, 2;
+        warn sprintf "%40s = %s\n", $search, $value;
+        is search($schema, $search), $value, "\$schema->$search == $value";
+    }
+
     return;
+}
+
+sub search {
+    my ($obj, $query) = @_;
+
+    my ($next, $rest) = split /->/, $query, 2;
+    warn "\tSearching ", (ref $obj), " for $next\n";
+
+    $obj
+        = blessed $obj && $obj->can($next) ? $obj->$next()
+        : ref $obj eq 'ARRAY' ? $obj->[$next]
+        : ref $obj eq 'HASH'  ? $obj->{$next}
+        :                          die "Can't get $query from $obj\n";
+
+    warn Dumper $obj;
+    return $rest ? search($obj, $rest) : $obj;
 }
