@@ -8,7 +8,7 @@ use Path::Class;
 use Data::Dumper qw/Dumper/;
 use W3C::XMLSchema;
 
-my @xsds = grep {/[.]xsd$/} file($0)->parent->subdir('xsds')->children;
+my @xsds = grep {/[.]xsd$/} dir('t/data/auto')->children;
 
 for my $xsd (@xsds) {
     test_xsd($xsd);
