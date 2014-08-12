@@ -36,6 +36,12 @@ from an XML Schema definition (aka XSD), as defined by the W3C.
 
 The namespace the schema definition targets.
 
+## element\_from\_default
+
+Form of elements declared into target namespace. Either qualified (elements
+must be prefixed with namespace) or unqualified the default (elements don't
+need namespace prefix).
+
 ## attribute\_groups
 
 A list of all the attribute groups defined. Instances of [W3C::XMLSchema::AttributeGroup](https://metacpan.org/pod/W3C::XMLSchema::AttributeGroup).

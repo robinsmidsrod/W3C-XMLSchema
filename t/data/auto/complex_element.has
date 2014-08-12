@@ -1,4 +1,4 @@
 target_namespace http://element.example.com/
-#element_form_default unqualified
+element_form_default unqualified
 elements->0->type ec:testType
 complex_types->0->items->0->items->0->type xsd:int

@@ -27,7 +27,7 @@ need namespace prefix).
 =cut
 
 has_xpath_value 'element_form_default' => './@elementFormDefault' => (
-    default => 'unqualified',
+    xml_default => 'unqualified',
 );
 
 =attr attribute_groups
