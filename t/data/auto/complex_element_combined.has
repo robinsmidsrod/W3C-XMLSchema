@@ -1,0 +1,7 @@
+target_namespace http://element.example.com/
+elements->0->name test
+elements->0->complex_types->0->items->0->items->0->name id
+elements->0->complex_types->0->items->0->items->1->name name
+elements->0->complex_types->0->items->0->items->1->type xsd:string
+elements->0->complex_types->0->items->0->items->1->min_occurs 1
+elements->0->complex_types->0->items->0->items->1->max_occurs 1

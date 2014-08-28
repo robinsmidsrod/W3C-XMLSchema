@@ -30,21 +30,37 @@ Identifier of the element this element refers to.
 
 has_xpath_value 'ref' => './@ref';
 
-=attr minOccurs
+=attr min_occurs
 
 Minimum amount of occurences.
 
 =cut
 
-has_xpath_value 'minOccurs' => './@minOccurs';
+has_xpath_value 'min_occurs' => './@minOccurs';
 
-=attr maxOccurs
+=attr max_occurs
 
 Maximum amount of occurences. 'unbounded' means no upper limit.
 
 =cut
 
-has_xpath_value 'maxOccurs' => './@maxOccurs';
+has_xpath_value 'max_occurs' => './@maxOccurs';
+
+=attr nillable
+
+Weather the element can be undefined (ie null="true")
+
+=cut
+
+has_xpath_value 'nillable' => './@nillable';
+
+=attr complex_types
+
+A list of all the complex types defined. Instances of L<W3C::XMLSchema::ComplexType>.
+
+=cut
+
+has_xpath_object_list 'complex_types' => './xsd:complexType' => 'W3C::XMLSchema::ComplexType';
 
 finalize_class();
 1;

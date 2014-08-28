@@ -34,6 +34,7 @@ has_xpath_object_list 'items' => './*',
     {
         'xsd:group'          => 'W3C::XMLSchema::Group',
         'xsd:attributeGroup' => 'W3C::XMLSchema::AttributeGroup',
+        'xsd:sequence'       => 'W3C::XMLSchema::Sequence',
     },
 ;
 

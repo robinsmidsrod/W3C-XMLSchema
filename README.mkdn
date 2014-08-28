@@ -36,21 +36,27 @@ from an XML Schema definition (aka XSD), as defined by the W3C.
 
 The namespace the schema definition targets.
 
+## element\_from\_default
+
+Form of elements declared into target namespace. Either qualified (elements
+must be prefixed with namespace) or unqualified the default (elements don't
+need namespace prefix).
+
 ## attribute\_groups
 
-A list of all the attribute groups defined. Instances of [W3C::XMLSchema::AttributeGroup](http://search.cpan.org/perldoc?W3C::XMLSchema::AttributeGroup).
+A list of all the attribute groups defined. Instances of [W3C::XMLSchema::AttributeGroup](https://metacpan.org/pod/W3C::XMLSchema::AttributeGroup).
 
 ## groups
 
-A list of all the groups defined. Instances of [W3C::XMLSchema::Group](http://search.cpan.org/perldoc?W3C::XMLSchema::Group).
+A list of all the groups defined. Instances of [W3C::XMLSchema::Group](https://metacpan.org/pod/W3C::XMLSchema::Group).
 
 ## complex\_types
 
-A list of all the complex types defined. Instances of [W3C::XMLSchema::ComplexType](http://search.cpan.org/perldoc?W3C::XMLSchema::ComplexType).
+A list of all the complex types defined. Instances of [W3C::XMLSchema::ComplexType](https://metacpan.org/pod/W3C::XMLSchema::ComplexType).
 
 ## elements
 
-A list of all the elements defined. Instances of [W3C::XMLSchema::Element](http://search.cpan.org/perldoc?W3C::XMLSchema::Element).
+A list of all the elements defined. Instances of [W3C::XMLSchema::Element](https://metacpan.org/pod/W3C::XMLSchema::Element).
 
 # INCOMPLETE IMPLEMENTATION / WORK-IN-PROGRESS
 
@@ -71,10 +77,10 @@ Chris Prather (perigrin)
 
 # SEE ALSO
 
-- [XML::Rabbit](http://search.cpan.org/perldoc?XML::Rabbit)
-- [XML::Toolkit](http://search.cpan.org/perldoc?XML::Toolkit)
-- [Moose](http://search.cpan.org/perldoc?Moose)
-- [XML::LibXML](http://search.cpan.org/perldoc?XML::LibXML)
+- [XML::Rabbit](https://metacpan.org/pod/XML::Rabbit)
+- [XML::Toolkit](https://metacpan.org/pod/XML::Toolkit)
+- [Moose](https://metacpan.org/pod/Moose)
+- [XML::LibXML](https://metacpan.org/pod/XML::LibXML)
 
 # SUPPORT
 
@@ -171,7 +177,7 @@ Robin Smidsrød <robin@smidsrod.no>
 
 # COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Robin Smidsrød.
+This software is copyright (c) 2014 by Robin Smidsrød.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
